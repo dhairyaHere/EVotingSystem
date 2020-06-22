@@ -1,0 +1,46 @@
+﻿@model PollingSystem.Models.Election
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.pollName ( @Model.pollCode )</h2>
+
+<div style=" padding-bottom:50px;">
+    
+    <br /><center><h3>Election Details</h3>
+                  <dl class="dl-horizontal" style="width:450px;border:4px solid black;margin:25px;padding:10px;background-color:floralwhite;">               
+                      <dt style="margin-top:25px;">
+                          <b> Election Name</b>
+                      </dt>
+
+                      <dd style="margin-top:25px;">
+                          @Html.DisplayFor(model => model.pollName)
+                      </dd>
+                      <br>
+                      <dt>
+                          <b>Number Of Contestants</b>
+                      </dt>
+
+                      <dd>
+                          @Html.DisplayFor(model => model.noOfContestants)
+                      </dd>
+                      <br>
+                      <dt>
+                          <b>Host Name</b>
+                      </dt>
+
+                      <dd>
+                          @Html.DisplayFor(model => model.hostName)
+                      </dd>
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" onclick="@("window.location.href='"+@Url.Action("ElectionMembers","ManagePolls",new { id = Model.pollCode }) + "'");">Candidate List</button>
+                  </dl>
+</center>
+</div>
+    
+<p>
+   @* @Html.ActionLink("Candidate List", "ElectionMembers", new { id = Model.pollCode }) *@|
+    @Html.ActionLink("Back to Ongoing Elections List", "Ongoing") |
+</p>

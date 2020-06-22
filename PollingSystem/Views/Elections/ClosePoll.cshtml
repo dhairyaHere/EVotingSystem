@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PollingSystem.Models.Contestant>
+@{
+    ViewBag.Title = "ClosePoll";
+}
+
+<h2>ClosePoll</h2>
+
+<h3>
+    After closing this election, Voters will not be able to cast their votes for this election and the result will automatically posted in
+    the "completed Polls" section for all users to see!
+    <br><br>
+</h3><br><br>
+<h4>
+    <b class="text-danger">Note</b>: The result displayed below is calculated on the basis of highest number of votes gained!
+    <br><br><br>In case of a tie,
+    all the tied candidates' details are displayed here and you may declare any one of them as winner!
+    
+</h4>
+    <br>
+@if(ViewBag.count > 1)
+{
+    <br><text>Whoaa!! It's a Tie between </text> @ViewBag.count <text> Candidates ! It's your turn to vote. Vote for any one of the below candidates to break the tie by declaring them as winner !</text>  
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.election.pollName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contestantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.symbol)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.election.pollName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contestantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalVotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.place)
+            </td>
+            <td>
+                <img class="img-thumbnail" style="border:1px solid black;" src="@Url.Content(item.symbol)" width="75" height="75" alt="@item.contestantName" />
+                
+            </td>
+            <td>
+                @Html.ActionLink("Declare Winner", "DeclareWinner", new { c_id = item.contestant_id, e_id = item.electionCode, noc = ViewBag.count }) |
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<PollingSystem.Models.Election>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Hosted Elections</h2>
+<br>
+<p>
+    <button class="btn btn-primary" onclick="@("window.location.href='"+@Url.Action("Create","Elections",null) + "'");">Host New Election</button>
+    
+</p><br>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pollName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.noOfContestants)
+            </th>
+            <th>
+                Election Status
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.hasEnded == 0)
+            {
+                <tr style="background-color:greenyellow">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pollName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hostName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.noOfContestants)
+                    </td>
+                    <td>
+                        @if (item.hasEnded == 0)
+                        {
+                            <text>Ongoing</text>
+                        }
+                        else
+                        {
+                            <text>Completed</text>
+                        }
+                    </td>
+                    <td>
+                        @if (item.hasEnded == 0)
+                        {
+                            <button class="btn btn-danger" onclick="@("window.location.href='"+@Url.Action("Edit","Elections",new { id=item.pollCode }) + "'");">Edit Election Details</button>
+                            @*<text>| </text> @Html.ActionLink("Edit Election Details", "Edit", new { id = item.pollCode }) <text>| </text>*@
+                        }
+
+                        @if (item.hasEnded == 0)
+                        {
+                            <button class="btn btn-primary" onclick="@("window.location.href='"+@Url.Action("Details","Elections",new { id=item.pollCode }) + "'");">View Details</button>
+                            @*     @Html.ActionLink("View Details", "Details", new { id = item.pollCode }) <text>|</text> *@
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" onclick="@("window.location.href='"+@Url.Action("CompDetails","ManagePolls",new { id=item.pollCode }) + "'");">View Results</button>
+
+                        }
+
+
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr >
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pollName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hostName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.noOfContestants)
+                    </td>
+                    <td>
+                        @if (item.hasEnded == 0)
+                        {
+                            <text>Ongoing</text>
+                        }
+                        else
+                        {
+                            <text>Completed</text>
+                        }
+                    </td>
+                    <td>
+                        @if (item.hasEnded == 0)
+                        {
+                        <button class="btn btn-danger" onclick="@("window.location.href='"+@Url.Action("Edit","Elections",new { id=item.pollCode }) + "'");">Edit Election Details</button>
+                            @*<text>| </text> @Html.ActionLink("Edit Election Details", "Edit", new { id = item.pollCode }) <text>| </text>*@
+                        }
+
+                        @if (item.hasEnded == 0)
+                        {
+                            
+                            @Html.ActionLink("View Details", "Details", new { id = item.pollCode }) <text>|</text>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" onclick="@("window.location.href='"+@Url.Action("CompDetails","ManagePolls",new { id=item.pollCode }) + "'");">View Results</button>
+                           @* @Html.ActionLink("View Results", "CompDetails", "ManagePolls", new { id = item.pollCode }, null) <text>|</text> *@
+                        }
+
+                        @if (item.hasEnded == 1)
+                        {
+
+                            @* @Html.ActionLink("Remove from History", "Delete", new { id = item.pollCode }) *@
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>

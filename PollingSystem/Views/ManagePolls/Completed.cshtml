@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PollingSystem.Models.Election>
+
+@{
+    ViewBag.Title = "Completed";
+}
+
+<h2>Past Elections</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pollName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hostName)
+        </th>
+        <th>
+            Number Of Contestants Participated
+            
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.pollName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hostName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noOfContestants)
+        </td>
+        
+        <td>
+            <button class="btn btn-success" onclick="@("window.location.href='"+@Url.Action("CompDetails","ManagePolls",new { id=item.pollCode }) + "'");">View Results</button>
+            @*| @Html.ActionLink("View All Details", "CompDetails", new { id=item.pollCode }) |*@
+            
+        </td>
+    </tr>
+}
+
+</table>

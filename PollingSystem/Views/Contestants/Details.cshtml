@@ -1,0 +1,66 @@
+﻿@model PollingSystem.Models.Contestant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contestant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.election.pollName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.election.pollName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contestantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contestantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalVotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalVotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.symbol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.symbol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.contestant_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

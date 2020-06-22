@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PollingSystem.Models.Contestant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.election.pollName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contestantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.symbol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.election.pollName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contestantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalVotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.symbol)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.contestant_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.contestant_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.contestant_id })
+        </td>
+    </tr>
+}
+
+</table>

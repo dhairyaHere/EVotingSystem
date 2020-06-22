@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PollingSystem.Models.Election>
+
+@{
+    ViewBag.Title = "Ongoing Elections";
+}
+
+<h2>Ongoing Elections</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pollName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noOfContestants)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pollName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noOfContestants)
+        </td>
+        <br>
+        <td>
+           <button class="btn btn-info" onclick="@("window.location.href='"+@Url.Action("Details","ManagePolls",new { id=item.pollCode }) + "'");"  >View More Details</button>
+           @*| @Html.ActionLink("Click here to see more details", "Details", new { id=item.pollCode }) | *@
+           
+        </td>
+    </tr>
+}
+
+</table>

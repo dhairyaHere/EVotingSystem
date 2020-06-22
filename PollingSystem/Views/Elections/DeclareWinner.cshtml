@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "DeclareWinner";
+}
+
+<h2>DeclareWinner</h2>
+
+<h2>
+    Election @ViewBag.ele_name Closed !!
+</h2>
+<h3>
+    Candidate @ViewBag.con_name has won the election @ViewBag.ele_name by securing the highest number of votes ( @ViewBag.votes ) among all other candidates !
+</h3>
+@Html.ActionLink("Back to Home Page","Index","Home");

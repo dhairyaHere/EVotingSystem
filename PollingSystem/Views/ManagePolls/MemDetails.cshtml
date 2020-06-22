@@ -1,0 +1,75 @@
+﻿@model PollingSystem.Models.Contestant
+
+@{
+    ViewBag.Title = "MemDetails";
+}
+
+<h2>Details of Candidate @Model.contestantName !</h2>
+
+<div>
+    <h4>Contestant for @ViewBag.ename </h4>
+    <hr />
+    <center>
+    <div>
+        <b>S Y M B O L</b>
+        <br><br>
+        <img class="img-circle" src="@Url.Content(Model.symbol)" width="110" height="110" alt="@Model.contestantName" />
+
+    </div>
+    <br><br><br>
+    <table class="table table-striped" style="width:450px;">
+
+        <tr>
+            <td>
+                <b>
+                    @Html.DisplayNameFor(model => model.election.pollName)
+                </b>
+            </td>
+            <td>
+                @ViewBag.ename
+            </td>
+
+        <tr>
+            <td>
+                <b>
+                    @Html.DisplayNameFor(model => model.contestantName)
+                </b>
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.contestantName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>
+                    @Html.DisplayNameFor(model => model.age)
+                </b>
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.age)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>
+                    @Html.DisplayNameFor(model => model.place)
+                </b>
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.place)
+            </td>
+        </tr>
+
+    </table>
+</center>
+</div>
+
+<br><br><br>
+<p>
+
+    | @Html.ActionLink("Back to Members List", "ElectionMembers", new { id = Model.electionCode }) |
+</p>

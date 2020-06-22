@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmVote";
+}
+
+<h2>ConfirmVote</h2>
+<div>
+    @if (ViewBag.found == true)
+    {
+        <h2>Sorry! You have already voted for this election.</h2>
+        <img src="~/Content/Images/images.jpg" alt="Sorry."/>
+    }
+    else
+    {
+        <h2>Your vote has been successfully registered! You have Voted to @ViewBag.con_name :) </h2>
+        <br>
+        <h3>Thank you for your precious vote! One vote can make a big difference :)</h3>
+        <img src="~/Content/Images/images1.png" alt="Thank You for voting" />
+    }
+    <br><br><br>
+    @Html.ActionLink("Back to Home Page", "Index","Home")
+</div>

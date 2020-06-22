@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PollingSystem.Models.Contestant>
+
+@{
+    ViewBag.Title = "ElectionMembers";
+}
+
+<h2>Candidate List for this Election </h2>
+<br>
+<p>
+    
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.election.pollName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contestantName)
+        </th>
+        
+        
+        
+        <th>
+            @Html.DisplayNameFor(model => model.symbol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.election.pollName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contestantName)
+        </td>
+        
+        <td>
+            <img src="@Url.Content(item.symbol)" width="55" height="55" alt="@item.contestantName" />
+        </td>
+        <td>
+            <button class="btn btn-danger" title="Confirm Vote" onclick="@("window.location.href='"+@Url.Action("ConfirmVote","ManagePolls",new { c_id = item.contestant_id, e_id = item.election.pollCode }) + "'");">Cast Vote</button>
+            <button class="btn btn-primary" title="Click here to take a quick look on contestant's background" onclick="@("window.location.href='"+@Url.Action("MemDetails","ManagePolls",new { id = item.contestant_id }) + "'");">Contestant Details</button>
+            @*| @Html.ActionLink("Cast Vote", "ConfirmVote", new { c_id = item.contestant_id, e_id = item.election.pollCode }) |
+                    | @Html.ActionLink("View Contestant's Details", "MemDetails", new { id = item.contestant_id }) | *@                                                                      
+
+                </td>
+            </tr>
+        }
+
+        </table><br><br>
+        <p>
+            | @Html.ActionLink("Back to Ongoing Elections List", "Ongoing") |
+        </p>
