@@ -1,4 +1,4 @@
-Title : Poll-Kholl - A service developed by Fruit Salad Technologies Pvt. Ltd.
+Title : Poll-Kholl - An Online Voting Service
 
 Description:
 	Poll-Kholl is an free, easy to use online voting system. This site facilitates students living out of
@@ -41,15 +41,3 @@ Conrollers' Description:
 
 	4.) Account Conroller, Manage Controller etc. are automatically created using Identity.
 	
-Contributers Information:
-
-	*	Dhairya Acharya ( CE SEM 5  - Backend developer )
-		Contact Information : 9265324087
-		Email : dhairya2308@gmail.com
-		Contribution : Admin Side Module
-			
-			
-	*	Darshan Gohel ( CE SEM 5 - Hardcore Graphics Designer )
-		Contact Information : 9974700761
-		Email : darshan.gohel619@gmail.com
-		Contribution : End User Module	
